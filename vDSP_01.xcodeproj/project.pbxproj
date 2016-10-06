@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		600877041D9FDB20007E062A /* recorder.c in Sources */ = {isa = PBXBuildFile; fileRef = 600877021D9FDB20007E062A /* recorder.c */; };
+		600877081D9FE153007E062A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600877071D9FE153007E062A /* AudioUnit.framework */; };
+		600877381DA10A20007E062A /* toneGen.c in Sources */ = {isa = PBXBuildFile; fileRef = 600877351DA10A20007E062A /* toneGen.c */; };
+		60C224A01D8E4D90002DF396 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 60C2249F1D8E4D90002DF396 /* main.c */; };
+		60C224A71D8E4DA2002DF396 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C224A61D8E4DA2002DF396 /* Accelerate.framework */; };
+		60C224AB1D8E5579002DF396 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C224AA1D8E5579002DF396 /* libsndfile.a */; };
+		60C71C191D903C8C0091DC14 /* fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 60C71C171D903C8C0091DC14 /* fft.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60C2249A1D8E4D90002DF396 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		600876FF1D9FDAFA007E062A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		600877021D9FDB20007E062A /* recorder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = recorder.c; sourceTree = "<group>"; };
+		600877031D9FDB20007E062A /* recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recorder.h; sourceTree = "<group>"; };
+		600877051D9FDCAC007E062A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		600877071D9FE153007E062A /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		600877351DA10A20007E062A /* toneGen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = toneGen.c; sourceTree = "<group>"; };
+		600877361DA10A20007E062A /* toneGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = toneGen.h; sourceTree = "<group>"; };
+		600877371DA10A20007E062A /* waveFormat1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = waveFormat1.h; sourceTree = "<group>"; };
+		60C2249C1D8E4D90002DF396 /* vDSP_01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vDSP_01; sourceTree = BUILT_PRODUCTS_DIR; };
+		60C2249F1D8E4D90002DF396 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		60C224A61D8E4DA2002DF396 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		60C224A81D8E5553002DF396 /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sndfile.h; path = ../../../../../usr/local/Cellar/libsndfile/1.0.26/include/sndfile.h; sourceTree = "<group>"; };
+		60C224A91D8E5553002DF396 /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sndfile.hh; path = ../../../../../usr/local/Cellar/libsndfile/1.0.26/include/sndfile.hh; sourceTree = "<group>"; };
+		60C224AA1D8E5579002DF396 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = ../../../../../usr/local/Cellar/libsndfile/1.0.26/lib/libsndfile.a; sourceTree = "<group>"; };
+		60C71C171D903C8C0091DC14 /* fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fft.c; sourceTree = "<group>"; };
+		60C71C181D903C8C0091DC14 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		60C224991D8E4D90002DF396 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600877081D9FE153007E062A /* AudioUnit.framework in Frameworks */,
+				60C224A71D8E4DA2002DF396 /* Accelerate.framework in Frameworks */,
+				60C224AB1D8E5579002DF396 /* libsndfile.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		600877011D9FDB0D007E062A /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				600877021D9FDB20007E062A /* recorder.c */,
+				600877031D9FDB20007E062A /* recorder.h */,
+			);
+			name = audio;
+			sourceTree = "<group>";
+		};
+		60C224931D8E4D90002DF396 = {
+			isa = PBXGroup;
+			children = (
+				600877071D9FE153007E062A /* AudioUnit.framework */,
+				600877051D9FDCAC007E062A /* CoreAudio.framework */,
+				600876FF1D9FDAFA007E062A /* AVFoundation.framework */,
+				60C224A61D8E4DA2002DF396 /* Accelerate.framework */,
+				60C2249E1D8E4D90002DF396 /* vDSP_01 */,
+				60C2249D1D8E4D90002DF396 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		60C2249D1D8E4D90002DF396 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60C2249C1D8E4D90002DF396 /* vDSP_01 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60C2249E1D8E4D90002DF396 /* vDSP_01 */ = {
+			isa = PBXGroup;
+			children = (
+				600877351DA10A20007E062A /* toneGen.c */,
+				600877361DA10A20007E062A /* toneGen.h */,
+				600877371DA10A20007E062A /* waveFormat1.h */,
+				600877011D9FDB0D007E062A /* audio */,
+				60C71C161D903C740091DC14 /* fft */,
+				60C224AA1D8E5579002DF396 /* libsndfile.a */,
+				60C224A81D8E5553002DF396 /* sndfile.h */,
+				60C224A91D8E5553002DF396 /* sndfile.hh */,
+				60C2249F1D8E4D90002DF396 /* main.c */,
+			);
+			path = vDSP_01;
+			sourceTree = "<group>";
+		};
+		60C71C161D903C740091DC14 /* fft */ = {
+			isa = PBXGroup;
+			children = (
+				60C71C171D903C8C0091DC14 /* fft.c */,
+				60C71C181D903C8C0091DC14 /* fft.h */,
+			);
+			name = fft;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		60C2249B1D8E4D90002DF396 /* vDSP_01 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60C224A31D8E4D90002DF396 /* Build configuration list for PBXNativeTarget "vDSP_01" */;
+			buildPhases = (
+				60C224981D8E4D90002DF396 /* Sources */,
+				60C224991D8E4D90002DF396 /* Frameworks */,
+				60C2249A1D8E4D90002DF396 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vDSP_01;
+			productName = vDSP_01;
+			productReference = 60C2249C1D8E4D90002DF396 /* vDSP_01 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		60C224941D8E4D90002DF396 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "chihiro hashimoto";
+				TargetAttributes = {
+					60C2249B1D8E4D90002DF396 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 60C224971D8E4D90002DF396 /* Build configuration list for PBXProject "vDSP_01" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 60C224931D8E4D90002DF396;
+			productRefGroup = 60C2249D1D8E4D90002DF396 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60C2249B1D8E4D90002DF396 /* vDSP_01 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		60C224981D8E4D90002DF396 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600877041D9FDB20007E062A /* recorder.c in Sources */,
+				60C71C191D903C8C0091DC14 /* fft.c in Sources */,
+				600877381DA10A20007E062A /* toneGen.c in Sources */,
+				60C224A01D8E4D90002DF396 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		60C224A11D8E4D90002DF396 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		60C224A21D8E4D90002DF396 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		60C224A41D8E4D90002DF396 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libsndfile/1.0.26/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		60C224A51D8E4D90002DF396 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libsndfile/1.0.26/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60C224971D8E4D90002DF396 /* Build configuration list for PBXProject "vDSP_01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60C224A11D8E4D90002DF396 /* Debug */,
+				60C224A21D8E4D90002DF396 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60C224A31D8E4D90002DF396 /* Build configuration list for PBXNativeTarget "vDSP_01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60C224A41D8E4D90002DF396 /* Debug */,
+				60C224A51D8E4D90002DF396 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60C224941D8E4D90002DF396 /* Project object */;
+}
