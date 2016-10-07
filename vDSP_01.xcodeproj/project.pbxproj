@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413BCB091DA79C1E00819D40 /* au_player.c in Sources */ = {isa = PBXBuildFile; fileRef = 413BCB071DA79C1E00819D40 /* au_player.c */; };
 		600877041D9FDB20007E062A /* recorder.c in Sources */ = {isa = PBXBuildFile; fileRef = 600877021D9FDB20007E062A /* recorder.c */; };
 		600877081D9FE153007E062A /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600877071D9FE153007E062A /* AudioUnit.framework */; };
 		600877381DA10A20007E062A /* toneGen.c in Sources */ = {isa = PBXBuildFile; fileRef = 600877351DA10A20007E062A /* toneGen.c */; };
@@ -29,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		413BCB071DA79C1E00819D40 /* au_player.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = au_player.c; sourceTree = "<group>"; };
+		413BCB081DA79C1E00819D40 /* au_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = au_player.h; sourceTree = "<group>"; };
 		600876FF1D9FDAFA007E062A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		600877021D9FDB20007E062A /* recorder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = recorder.c; sourceTree = "<group>"; };
 		600877031D9FDB20007E062A /* recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recorder.h; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 			children = (
 				600877021D9FDB20007E062A /* recorder.c */,
 				600877031D9FDB20007E062A /* recorder.h */,
+				413BCB071DA79C1E00819D40 /* au_player.c */,
+				413BCB081DA79C1E00819D40 /* au_player.h */,
 			);
 			name = audio;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				600877041D9FDB20007E062A /* recorder.c in Sources */,
 				60C71C191D903C8C0091DC14 /* fft.c in Sources */,
 				600877381DA10A20007E062A /* toneGen.c in Sources */,
+				413BCB091DA79C1E00819D40 /* au_player.c in Sources */,
 				60C224A01D8E4D90002DF396 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
