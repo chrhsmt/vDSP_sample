@@ -14,6 +14,8 @@
 #include <AudioToolbox/AudioToolbox.h>
 #include <math.h>
 
+#include <pthread.h>
+
 #define FFTSIZE 2048
 #define SAMPLE_RATE 44100.00
 #define BITRATE 16
@@ -21,6 +23,11 @@
 
 //static FILE *fpout;
 static int sampleCount = 0;
+
+pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+
+FFTSetup fftSetup = NULL;
+DSPSplitComplex splitComplex;
 
 static OSStatus RecorderCallback(
                           void *inRefCon,
@@ -75,7 +82,7 @@ static OSStatus RecorderCallback(
             
 //            buffer[i] = signal;
             buffer[i] = SHRT_MAX * signal;
-            printf("%f\n", buffer[i]);
+//            printf("%f\n", buffer[i]);
 
 //            // save wave file
 //            if (sampleCount <= 44100 * 5.0) {
@@ -84,20 +91,17 @@ static OSStatus RecorderCallback(
 //            }
         }
 
-        int fftHalfSize = FFTSIZE / 2;
-        DSPSplitComplex splitComplex;
+        pthread_mutex_lock(&m);
         
-        // alloc complex
-        splitComplex.realp = malloc(sizeof(float) * fftHalfSize);
-        splitComplex.imagp = malloc(sizeof(float) * fftHalfSize);
+        int fftHalfSize = FFTSIZE / 2;
         
         float *magnitude = malloc(sizeof(float) * fftHalfSize);
         for (int i = 0; i < fftHalfSize; i++) {
             magnitude[i] = 0.0f;
         }
-        
+
         // do FFT
-        FFT(buffer, &splitComplex, FFTSIZE);
+        FFT(buffer, &splitComplex, FFTSIZE, fftSetup);
         
         vDSP_zvabs(&splitComplex, 1, magnitude, 1, fftHalfSize);
         
@@ -110,13 +114,18 @@ static OSStatus RecorderCallback(
             if (freqBins * i > 18000 && freqBins * i < 22000 && !isnan(magnitude[i]) && magnitude[i] != -INFINITY)
             printf("%0.2f hz : magunitude = %f\n", freqBins * i, magnitude[i]);
         }
-        FFT_free(&splitComplex);
         free(magnitude);
         free(buffer);
-
-//        free(mData);
+        
+        for (int i = 0; i < bufferList.mNumberBuffers; i++) {
+            if (bufferList.mBuffers[i].mData) free(bufferList.mBuffers[i].mData);
+        }
+//        AudioBufferList *p = &bufferList;
+//        free(p);
+        
+        pthread_mutex_unlock(&m);
     }
-    
+
     return err;
 }
 
@@ -126,6 +135,7 @@ OSStatus setUpAudioHAL(AudioUnit * inputUnit) {
     OSStatus err = noErr;
     
     // AudioUnitを作成する
+    
     AudioComponentDescription desc;
     
     desc.componentType = kAudioUnitType_Output;
@@ -340,6 +350,13 @@ int record() {
         return -1;
     }
     
+    fftSetup = vDSP_create_fftsetup(log2(FFTSIZE), kFFTRadix2);
+    createWindow(FFTSIZE);
+    int fftHalfSize = FFTSIZE / 2;
+    // alloc complex
+    splitComplex.realp = malloc(sizeof(float) * fftHalfSize);
+    splitComplex.imagp = malloc(sizeof(float) * fftHalfSize);
+
     if (AudioOutputUnitStart(inputUnit) != noErr)
     {
         printf("err : AudioOutputUnitStart");
@@ -383,6 +400,11 @@ int record() {
 
     AudioUnitUninitialize(inputUnit);
     AudioComponentInstanceDispose(inputUnit);
+
+    FFT_free(&splitComplex);
+    vDSP_destroy_fftsetup(fftSetup);
+    freeWindow();
+
     return 0;
     
 }

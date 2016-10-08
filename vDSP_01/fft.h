@@ -16,6 +16,11 @@
 #endif /* fft_h */
 
 
-void FFT(float *wavedata, DSPSplitComplex *splitComplex, int fftSize);
+void FFT(float *wavedata, DSPSplitComplex *splitComplex, int fftSize, FFTSetup fftSetup);
 
 void FFT_free(DSPSplitComplex *splitComplex);
+
+
+void createWindow(int fftSize);
+
+void freeWindow();
