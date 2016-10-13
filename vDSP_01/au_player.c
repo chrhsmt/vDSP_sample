@@ -8,6 +8,8 @@
 
 #include "au_player.h"
 
+#define REVERB
+
 void CreateAUGraph(AUGraphDesc * graphDesc) {
     
     NewAUGraph(&graphDesc->graph);
@@ -38,6 +40,56 @@ void CreateAUGraph(AUGraphDesc * graphDesc) {
     // 再生ファイルノード情報取得
     AUGraphNodeInfo(graphDesc->graph, fileNode, NULL, &graphDesc->fileAU);
     
+#ifdef REVERB
+    // 残響AUコンポーネント
+    AudioComponentDescription reverbComp = {0};
+    reverbComp.componentType = kAudioUnitType_Effect;
+    reverbComp.componentSubType = kAudioUnitSubType_MatrixReverb;
+    reverbComp.componentManufacturer = kAudioUnitManufacturer_Apple;
+    
+    // グラフにノードを追加
+    AUNode reverNode;
+    AUGraphAddNode(graphDesc->graph,
+                   &reverbComp,
+                   &reverNode);
+    
+    // 残響ノードとファイルノードを接続
+    AUGraphConnectNodeInput(graphDesc->graph,
+                            fileNode,
+                            0,
+                            reverNode,
+                            0);
+    
+    // 残響ノードと出力ノードを接続
+    AUGraphConnectNodeInput(graphDesc->graph,
+                            reverNode,
+                            0,
+                            outputNode,
+                            0);
+    
+    // 残響ノード情報取得
+    AudioUnit reverbUnit;
+    AUGraphNodeInfo(graphDesc->graph,
+                    reverNode,
+                    NULL,
+                    &reverbUnit);
+
+    // オーディオ処理グラフ初期化
+    AUGraphInitialize(graphDesc->graph);
+    // グラフ情報を出力
+    CAShow(graphDesc->graph);
+    
+    // 残響AUに室タイプ・プロパティ設定
+//    UInt32 roomType = kReverbRoomType_Cathedral;
+    UInt32 roomType = kReverbRoomType_LargeHall2;
+    AudioUnitSetProperty(reverbUnit,
+                         kAudioUnitProperty_ReverbRoomType,
+                         kAudioUnitScope_Global,
+                         0,
+                         &roomType,
+                         sizeof(roomType));
+    
+#else
     // ファイルノードと出力ノードを接続
     AUGraphConnectNodeInput(graphDesc->graph, fileNode, 0, outputNode, 0);
     
@@ -45,6 +97,7 @@ void CreateAUGraph(AUGraphDesc * graphDesc) {
     AUGraphInitialize(graphDesc->graph);
     // グラフ情報を出力
     CAShow(graphDesc->graph);
+#endif
 }
 
 Float64 CulcuratePlayTime(AUGraphDesc * graphDesc) {
