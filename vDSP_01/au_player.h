@@ -20,6 +20,6 @@ typedef struct AUGraphDesc {
 } AUGraphDesc;
 
 
-int play(int argc, char * argv[]);
+int play(int argc, const char * argv[]);
 
 #endif /* au_player_h */

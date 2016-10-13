@@ -15,6 +15,7 @@
 
 #include "fft.h"
 #include "recorder.h"
+#include "au_player.h"
 
 
 #define PI 3.14159265358979323846264338 // PI
@@ -147,7 +148,7 @@ int main(int argc, const char * argv[]) {
 //    // close
 //    sf_close(fp);
 
-    status = record();
-    
+//    status = record();
+    status = play(argc, argv);
     return status;
 }

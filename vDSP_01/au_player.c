@@ -59,13 +59,11 @@ Float64 CulcuratePlayTime(AUGraphDesc * graphDesc) {
     
     // 再生ファイルのデータ・パケット数を取得する
     UInt64 nPackets;
-    UInt32 propSize;
-    AudioUnitGetProperty(graphDesc->fileAU,
+    UInt32 propSize = sizeof(nPackets);
+    AudioFileGetProperty(graphDesc->playFile,
                          kAudioFilePropertyAudioDataPacketCount,
-                         kAudioUnitScope_Global,
-                         0,
-                         &nPackets,
-                         &propSize); // ?
+                         &propSize,
+                         &nPackets);
     
     // 再生ファイルAUにファイル再生領域の情報を設定
     ScheduledAudioFileRegion region;
@@ -102,7 +100,7 @@ Float64 CulcuratePlayTime(AUGraphDesc * graphDesc) {
     return (nPackets * graphDesc->fileFormat.mFramesPerPacket) / graphDesc->fileFormat.mSampleRate;
 }
 
-int play(int argc, char * argv[]) {
+int play(int argc, const char * argv[]) {
     
     const char *filePath = NULL;
     AUGraphDesc graphDesc;
@@ -135,6 +133,7 @@ int play(int argc, char * argv[]) {
     AUGraphStart(graphDesc.graph);
     printf("再生開始\n");
     printf("%s\n", filePath);
+    printf("play time: %f秒\n", playTime);
     
     // sleep (μ秒)
     usleep((int)(playTime * 1000.0 * 1000.0));
